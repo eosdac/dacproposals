@@ -182,6 +182,27 @@ using namespace std;
         configs.set(new_config, _self);
     }
 
+template <typename T>
+void cleanTable(name code, uint64_t account){
+    T db(code, account);
+    while(db.begin() != db.end()){
+        auto itr = --db.end();
+        db.erase(itr);
+    }
+}
+
+void dacproposals::migrate() {
+
+   configs_table configs(_self, _self.value);
+   configs.remove();
+
+   statecontainer state(_self, _self.value);
+   state.remove();
+   
+   cleanTable<proposal_table>(_self, _self.value);
+   cleanTable<proposal_vote_table>(_self, _self.value);
+}
+
 //    Private methods
 
     void dacproposals::transferfunds(const proposal &prop) {
@@ -229,4 +250,5 @@ EOSIO_DISPATCH(dacproposals,
                 (cancel)
                 (comment)
                 (updateconfig)
+                (migrate)
         )

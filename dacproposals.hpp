@@ -80,7 +80,7 @@ public:
         }
 
     ~dacproposals() {
-        contract_state.set(_currentState, _self); // This should not run during a contract_state migration since it will prevent changing the schema with data saved between runs.
+        // contract_state.set(_currentState, _self); // This should not run during a contract_state migration since it will prevent changing the schema with data saved between runs.
     }
 
     ACTION createprop(name proposer, string title, string summary, name arbitrator, extended_asset pay_amount, string content_hash);
@@ -92,6 +92,7 @@ public:
     ACTION cancel(uint64_t proposal_id);
     ACTION comment(name commenter, uint64_t proposal_id, string comment, string comment_category);
     ACTION updateconfig(configtype new_config);
+    ACTION migrate();
 
 private:
 

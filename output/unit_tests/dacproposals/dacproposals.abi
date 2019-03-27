@@ -1,5 +1,5 @@
 {
-    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Mon Mar 11 23:07:19 2019",
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Wed Mar 27 22:46:20 2019",
     "version": "eosio::abi/1.1",
     "structs": [
         {
@@ -151,6 +151,11 @@
             ]
         },
         {
+            "name": "migrate",
+            "base": "",
+            "fields": []
+        },
+        {
             "name": "proposal",
             "base": "",
             "fields": [
@@ -276,6 +281,11 @@
             "name": "createprop",
             "type": "createprop",
             "ricardian_contract": "## ACTION: createprop\n**PARAMETERS:**\n* __proposer__ is an eosio account name.\n* __title__ is a string that provides a title for the proposal.\n* __summary__ is a string that provides a summary for the proposal.\n* __arbitrator__ is an eosio account name for a nominated arbitrator on the proposal.\n* __pay_amount__ is an eosio asset amount representing the requested pay amount for the worker proposal.\n* __content_hash__ is a string that provides a hash of the details of the proposal.\n\n**INTENT** The intent of createprop is to enter a new worker proposal.\n#### Warning: This action will store the content on the chain in the history logs and the data cannot be deleted later so therefore should only store a unidentifiable hash of content rather than human readable content."
+        },
+        {
+            "name": "migrate",
+            "type": "migrate",
+            "ricardian_contract": ""
         },
         {
             "name": "startwork",
